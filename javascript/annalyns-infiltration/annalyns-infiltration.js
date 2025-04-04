@@ -27,7 +27,7 @@
  * @return {boolean} Whether or not you can execute a fast attack.
  */
 export function canExecuteFastAttack(knightIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  return !knightIsAwake;
 }
 
 /**
@@ -40,7 +40,7 @@ export function canExecuteFastAttack(knightIsAwake) {
  * @returns {boolean} Whether or not you can spy on someone.
  */
 export function canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  return knightIsAwake || archerIsAwake || prisonerIsAwake;
 }
 
 /**
@@ -52,7 +52,7 @@ export function canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake) {
  * @returns {boolean} Whether or not you can send a signal to the prisoner.
  */
 export function canSignalPrisoner(archerIsAwake, prisonerIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  return !archerIsAwake && prisonerIsAwake;
 }
 
 /**
@@ -65,11 +65,28 @@ export function canSignalPrisoner(archerIsAwake, prisonerIsAwake) {
  *
  * @returns {boolean} Whether or not you can free Annalyn's friend.
  */
+/* 
+ITERATION - 1
 export function canFreePrisoner(
   knightIsAwake,
   archerIsAwake,
   prisonerIsAwake,
   petDogIsPresent,
 ) {
-  throw new Error('Remove this line and implement the function');
+  if (petDogIsPresent && !archerIsAwake) {
+    return true;
+  } else if (!petDogIsPresent && prisonerIsAwake && !knightIsAwake && !archerIsAwake) {
+    return true;
+  } else {
+    return false;
+  }
+} */
+
+export function canFreePrisoner(
+  knightIsAwake,
+  archerIsAwake,
+  prisonerIsAwake,
+  petDogIsPresent,
+) {
+  return (petDogIsPresent && !archerIsAwake) || (!petDogIsPresent && prisonerIsAwake && !knightIsAwake && !archerIsAwake);
 }
